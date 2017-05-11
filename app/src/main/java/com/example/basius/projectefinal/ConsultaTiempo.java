@@ -44,7 +44,11 @@ public class ConsultaTiempo extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        UltimosResultados();
+        return inflater.inflate(R.layout.fragment_consulta_tiempo, container, false);
+    }
+
+    public void UltimosResultados(){
         referencia = database.getReference();
         Query lastQuery = referencia.orderByKey().limitToLast(1);
         lastQuery.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -76,6 +80,5 @@ public class ConsultaTiempo extends Fragment {
 
             }
         });
-        return inflater.inflate(R.layout.fragment_consulta_tiempo, container, false);
     }
 }

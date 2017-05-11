@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class Graficas extends Fragment {
+    //http://www.android-graphview.org/
+    //http://www.android-graphview.org/simple-graph/
     public Graficas() {
         // Required empty public constructor
     }

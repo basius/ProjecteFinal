@@ -6,9 +6,8 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <RadioButton
-        android:text="RadioButton"
-        android:layout_width="265dp"
-        android:layout_height="174dp"
-        android:id="@+id/radioButton" />
+    <WebView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/webView" />
 </FrameLayout>
