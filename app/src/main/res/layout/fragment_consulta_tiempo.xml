@@ -24,7 +24,6 @@
         android:layout_marginBottom="216dp" />
 
     <TextView
-        android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tempField"
@@ -65,7 +64,6 @@
         android:layout_marginBottom="8dp" />
 
     <TextView
-        android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/humField"
@@ -76,7 +74,6 @@
         android:layout_marginBottom="8dp" />
 
     <TextView
-        android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/presField"
@@ -85,5 +82,21 @@
         android:layout_marginRight="16dp"
         app:layout_constraintBottom_toTopOf="@+id/tempField"
         android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/infoLastUpdate"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/humTitle"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintVertical_bias="0.81" />
 
 </android.support.constraint.ConstraintLayout>

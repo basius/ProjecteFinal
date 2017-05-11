@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -16,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -30,6 +32,11 @@ public class ConsultaTiempo extends Fragment {
     //FIREBASE
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference referencia;
+    View view;
+    TextView tempF;
+    TextView humF;
+    TextView presF;
+    TextView infoLastUpdate;
     //INFO METEO
     public ConsultaTiempo() {
         // Required empty public constructor
@@ -45,13 +52,14 @@ public class ConsultaTiempo extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         UltimosResultados();
-        return inflater.inflate(R.layout.fragment_consulta_tiempo, container, false);
+        view = inflater.inflate(R.layout.fragment_consulta_tiempo, container, false);
+        return view;
     }
 
     public void UltimosResultados(){
         referencia = database.getReference();
         Query lastQuery = referencia.orderByKey().limitToLast(1);
-        lastQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+        lastQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String hour = "";
@@ -70,6 +78,14 @@ public class ConsultaTiempo extends Fragment {
                         press = test.child("PRESSURE").getValue(Double.class);
                     }
                 }
+                tempF = (TextView) view.findViewById(R.id.tempField);
+                tempF.setText((double)Math.round(temp*10d)/10d+" ºC");
+                humF = (TextView) view.findViewById(R.id.humField);
+                humF.setText((double)Math.round(humidity*10d)/10d+" %");
+                presF = (TextView) view.findViewById(R.id.presField);
+                presF.setText((double)Math.round(press*10d)/10d+"");
+                infoLastUpdate = (TextView) view.findViewById(R.id.infoLastUpdate);
+                infoLastUpdate.setText("LAST UPDATE: "+hour);
                 System.out.println(hour+" --> TEMPERATURA: "+temp);
                 System.out.println(hour+" --> HUMIDITY: "+humidity);
                 System.out.println(hour+" --> PRESSURE: "+press);
