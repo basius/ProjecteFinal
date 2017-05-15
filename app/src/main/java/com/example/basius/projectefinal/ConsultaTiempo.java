@@ -52,7 +52,7 @@ public class ConsultaTiempo extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         UltimosResultados();
-        view = inflater.inflate(R.layout.fragment_consulta_tiempo, container, false);
+        view = inflater.inflate(R.layout.fragment_consulta_tiempo2, container, false);
         return view;
     }
 
@@ -84,8 +84,8 @@ public class ConsultaTiempo extends Fragment {
                 humF.setText((double)Math.round(humidity*10d)/10d+" %");
                 presF = (TextView) view.findViewById(R.id.presField);
                 presF.setText((double)Math.round(press*10d)/10d+"");
-                infoLastUpdate = (TextView) view.findViewById(R.id.infoLastUpdate);
-                infoLastUpdate.setText("LAST UPDATE: "+hour);
+                //infoLastUpdate = (TextView) view.findViewById(R.id.infoLastUpdate);
+               // infoLastUpdate.setText("LAST UPDATE: "+hour);
                 System.out.println(hour+" --> TEMPERATURA: "+temp);
                 System.out.println(hour+" --> HUMIDITY: "+humidity);
                 System.out.println(hour+" --> PRESSURE: "+press);
