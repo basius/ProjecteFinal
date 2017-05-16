@@ -1,13 +1,17 @@
 package com.example.basius.projectefinal;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -37,6 +41,7 @@ public class ConsultaTiempo extends Fragment {
     TextView humF;
     TextView presF;
     TextView infoLastUpdate;
+    ImageView iconoTiempo;
     //INFO METEO
     public ConsultaTiempo() {
         // Required empty public constructor
@@ -51,12 +56,18 @@ public class ConsultaTiempo extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        UltimosResultados();
+
+        //StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        //StrictMode.setThreadPolicy(policy);
+        //UltimosResultados();
+        FetchResults fR = new FetchResults();
+        fR.execute("");
         view = inflater.inflate(R.layout.fragment_consulta_tiempo2, container, false);
         return view;
     }
 
-    public void UltimosResultados(){
+    public void UltimosResultados(int _link){
+        final int link = _link;
         referencia = database.getReference();
         Query lastQuery = referencia.orderByKey().limitToLast(1);
         lastQuery.addValueEventListener(new ValueEventListener() {
@@ -83,12 +94,16 @@ public class ConsultaTiempo extends Fragment {
                 humF = (TextView) view.findViewById(R.id.humField);
                 humF.setText((double)Math.round(humidity*10d)/10d+" %");
                 presF = (TextView) view.findViewById(R.id.presField);
-                presF.setText((double)Math.round(press*10d)/10d+"");
+                presF.setText((double)Math.round(press*10d)/10d+" hPa");
                 //infoLastUpdate = (TextView) view.findViewById(R.id.infoLastUpdate);
                // infoLastUpdate.setText("LAST UPDATE: "+hour);
                 System.out.println(hour+" --> TEMPERATURA: "+temp);
                 System.out.println(hour+" --> HUMIDITY: "+humidity);
                 System.out.println(hour+" --> PRESSURE: "+press);
+
+                iconoTiempo = (ImageView) view.findViewById(R.id.imageViewApi);
+                Drawable myDrawable = getResources().getDrawable(link);
+                iconoTiempo.setImageDrawable(myDrawable);
             }
 
             @Override
@@ -97,4 +112,20 @@ public class ConsultaTiempo extends Fragment {
             }
         });
     }
+
+    private class FetchResults extends AsyncTask<String, Void, Integer>{
+        @Override
+        protected Integer doInBackground(String... strings) {
+            //Llamada  a la Api para obtener el codigo
+            String codigo = ApiTiempo.getWeather();
+            //Devolvemos el codigo de l aimagen como entero
+            return ApiTiempo.CompruebaImagen(codigo);
+        }
+
+        protected void onPostExecute(Integer link) {
+            // Pasamos el entero de la respuesta obtenida en la API
+            UltimosResultados(link);
+        }
+    }
+
 }
