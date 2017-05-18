@@ -59,7 +59,6 @@ public class ConsultaTiempo extends Fragment {
 
         //StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         //StrictMode.setThreadPolicy(policy);
-        //UltimosResultados();
         FetchResults fR = new FetchResults();
         fR.execute("");
         view = inflater.inflate(R.layout.fragment_consulta_tiempo2, container, false);
@@ -120,7 +119,7 @@ public class ConsultaTiempo extends Fragment {
         protected Integer doInBackground(String... strings) {
             //Llamada  a la Api para obtener el codigo
             String codigo = ApiTiempo.getWeather();
-            //Devolvemos el codigo de l aimagen como entero
+            //Devolvemos el codigo de la imagen como entero
             return ApiTiempo.CompruebaImagen(codigo);
         }
 
