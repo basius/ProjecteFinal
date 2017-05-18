@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.basius.projectefinal.ConsultaTiempo">
+    tools:context="com.example.basius.projectefinal.ConsultaTiempo"
+    android:background="@color/colorPrimary">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -21,7 +22,8 @@
         android:layout_marginRight="8dp"
         app:layout_constraintHorizontal_bias="0.62"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="216dp" />
+        android:layout_marginBottom="216dp"
+        android:textColor="@android:color/background_light" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -46,7 +48,8 @@
         android:layout_marginRight="8dp"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintBottom_toTopOf="@+id/presTitle"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginBottom="8dp"
+        android:textColor="@android:color/background_light" />
 
     <TextView
         android:text="PRESIÓN"
@@ -61,7 +64,8 @@
         app:layout_constraintHorizontal_bias="1.0"
         android:layout_width="0dp"
         app:layout_constraintBottom_toTopOf="@+id/tempTitle"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginBottom="8dp"
+        android:textColor="@android:color/background_light" />
 
     <TextView
         android:layout_width="wrap_content"

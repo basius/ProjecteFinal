@@ -83,10 +83,12 @@ public class ConsultaTiempo extends Fragment {
                     for(DataSnapshot test : dt.getChildren()){
                         //Hora de la actualitzacio
                         hour = test.getKey();
-                        //Temperatura de la ultima actualitzacio
-                        temp = test.child("TEMPERATURA").getValue(Double.class);
-                        humidity = test.child("HUMIDITY").getValue(Double.class);
-                        press = test.child("PRESSURE").getValue(Double.class);
+                        if(!test.child("TEMPERATURAMEDIA").exists()) {
+                            //Temperatura de la ultima actualitzacio
+                            temp = test.child("TEMPERATURA").getValue(Double.class);
+                            humidity = test.child("HUMIDITY").getValue(Double.class);
+                            press = test.child("PRESSURE").getValue(Double.class);
+                        }
                     }
                 }
                 tempF = (TextView) view.findViewById(R.id.tempField);

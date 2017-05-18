@@ -32,14 +32,7 @@ public class MainActivity extends AppCompatActivity
             getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.content_main,fragment,null).commit();
         }
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -98,10 +91,6 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.graficos) {
             fragment = new Graficas();
             transaccion = true;
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
         }
         if(transaccion){
             getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.content_main,fragment,null).commit();
