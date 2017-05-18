@@ -81,10 +81,10 @@ public class ConsultaTiempo extends Fragment {
                 while (iterator.hasNext()){
                     DataSnapshot dt = iterator.next();
                     for(DataSnapshot test : dt.getChildren()){
-                        //Hora de la actualitzacio
+                        //Hora de la actualitzacion
                         hour = test.getKey();
                         if(!test.child("TEMPERATURAMEDIA").exists()) {
-                            //Temperatura de la ultima actualitzacio
+                            //Temperatura de la ultima actualitzacion
                             temp = test.child("TEMPERATURA").getValue(Double.class);
                             humidity = test.child("HUMIDITY").getValue(Double.class);
                             press = test.child("PRESSURE").getValue(Double.class);
