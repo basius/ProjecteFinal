@@ -156,4 +156,13 @@
         tools:layout_editor_absoluteY="0dp"
         tools:layout_editor_absoluteX="0dp" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteY="467dp"
+        tools:layout_editor_absoluteX="153dp"
+        android:id="@+id/horaactualitzacio"
+        android:textColor="@android:color/background_light"
+        android:text="-" />
+
 </android.support.constraint.ConstraintLayout>

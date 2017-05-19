@@ -1,31 +1,17 @@
 package com.example.basius.projectefinal;
 
-import android.content.Context;
-import android.net.Uri;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+import android.webkit.WebView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
-import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.series.BarGraphSeries;
-import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
-import com.jjoe64.graphview.series.PointsGraphSeries;
-
-import java.util.Iterator;
 
 public class Graficas extends Fragment {
-    //http://www.android-graphview.org/
-    //http://www.android-graphview.org/simple-graph/
-    //https://github.com/appsthatmatter/GraphView
+    public WebView webViewGrafica;
     //FIREBASE
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference referencia;
@@ -42,25 +28,8 @@ public class Graficas extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_graficas, container, false);
-        GraphView graph = (GraphView) view.findViewById(R.id.graph);
-
-
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
-                new DataPoint(0, 1),
-                new DataPoint(1, 5),
-                new DataPoint(2, 3),
-                new DataPoint(3, 2),
-                new DataPoint(4, 6)
-        });
-        PointsGraphSeries<DataPoint> series2 = new PointsGraphSeries<>(new DataPoint[] {
-                new DataPoint(0, 2),
-                new DataPoint(1, 6),
-                new DataPoint(2, 8),
-                new DataPoint(3, 10),
-                new DataPoint(4, 6)
-        });
-        graph.addSeries(series);
-        graph.addSeries(series2);
+        webViewGrafica = (WebView) view.findViewById(R.id.webViewGrafica);
+        webViewGrafica.loadUrl("https://estaciometeo-73e65.firebaseapp.com/stadistics22.html");
         return view;
     }
 

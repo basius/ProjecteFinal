@@ -40,7 +40,7 @@ public class ConsultaTiempo extends Fragment {
     TextView tempF;
     TextView humF;
     TextView presF;
-    TextView infoLastUpdate;
+    TextView horaactualitzacio;
     ImageView iconoTiempo;
     //INFO METEO
     public ConsultaTiempo() {
@@ -96,8 +96,8 @@ public class ConsultaTiempo extends Fragment {
                 humF.setText((double)Math.round(humidity*10d)/10d+" %");
                 presF = (TextView) view.findViewById(R.id.presField);
                 presF.setText((double)Math.round(press*10d)/10d+" hPa");
-                //infoLastUpdate = (TextView) view.findViewById(R.id.infoLastUpdate);
-               // infoLastUpdate.setText("LAST UPDATE: "+hour);
+                horaactualitzacio = (TextView) view.findViewById(R.id.horaactualitzacio);
+                horaactualitzacio.setText("LAST UPDATE   "+hour);
                 System.out.println(hour+" --> TEMPERATURA: "+temp);
                 System.out.println(hour+" --> HUMIDITY: "+humidity);
                 System.out.println(hour+" --> PRESSURE: "+press);
